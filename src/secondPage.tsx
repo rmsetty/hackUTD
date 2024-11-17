@@ -30,7 +30,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-export default function FinancialAssistant() {
+export default function SecondPage() {
   const [lastUpdated, setLastUpdated] = useState(new Date())
   const [queryType, setQueryType] = useState('market-trends')
   const [xAxis, setXAxis] = useState('time')
@@ -39,14 +39,72 @@ export default function FinancialAssistant() {
   const [pointSize, setPointSize] = useState('medium')
   const [pointShape, setPointShape] = useState('circle')
   const [facetBy, setFacetBy] = useState('none')
-
+  const [pdfTextPath, setPdfTextPath]  = useState()
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+    const [inputValue, setInputValue] = useState('')
+  // Handle file upload
+ 
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      const formData = new FormData();
+      formData.append('file', files[0]);
+  
+      fetch('http://localhost:5000/upload-pdf', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.pdfTextPath) {
+            // Store the path for the uploaded PDF text
+            setPdfTextPath(data.pdfTextPath);
+          }
+        })
+        .catch((error) => console.error('Error uploading file:', error));
+    }
+  };
+  
+  
+  const handleQuery = async(query: string) => {
 
+        const response = await fetch('http://localhost:5000/api/chatPrompt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(query),
+        })
+
+        if (!response.ok) throw new Error('Failed to get response')
+
+        const data = await response.json()
+        console.log(data);
+        /*
+    fetch('http://localhost:5000/ask-pdf-question', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query,
+        pdfTextPath: pdfTextPath, // Path to the uploaded PDF text
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.response) {
+          // Display the response
+          console.log('Answer:', data.response);
+          // Update UI with the response
+        }
+      })
+      .catch((error) => console.error('Error querying PDF:', error));*/
+  };
   // Toggle dark mode
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev)
   }
-
+  const handleSubmit  = ()=>{
+    handleQuery(`Given a document attached containing financial information, answer the question given with given information ${inputValue}`)
+  }
   // Update the timestamp
   const updateTimestamp = () => {
     setLastUpdated(new Date())
@@ -171,9 +229,11 @@ export default function FinancialAssistant() {
             <input
     type="text"
     placeholder="Type your message here..."
+    value={inputValue} 
+    onChange={(e) => setInputValue(e.target.value)} 
     className="flex-grow mr-2 border p-2 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600 bg-white text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
   />
-              <button type="submit" className="flex items-center bg-blue-500 text-white p-2 rounded-lg">
+              <button type="submit" onClick={handleSubmit}className="flex items-center bg-blue-500 text-white p-2 rounded-lg">
                 <svg className="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7-7 7M5 12h14" />
                 </svg>
@@ -242,7 +302,7 @@ export default function FinancialAssistant() {
     {/* File Upload Button */}
     <div className="flex justify-center items-center border-2 border-dashed border-gray-300 p-6 rounded-lg mb-6">
       <label className="cursor-pointer text-blue-500">
-        <input type="file" className="hidden" />
+        <input type="file" accept=".pdf" className="hidden"           onChange={handleFileUpload} />
         <span className="text-lg">Click or Drag to Upload Template</span>
       </label>
     </div>

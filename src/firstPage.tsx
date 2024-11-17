@@ -141,7 +141,7 @@ export default function FinancialAssistant() {
   Chart will be rendered here based on selected options
 </div>
           <div className="mt-6 border-t pt-6">
-            <h3 className="text-lg font-semibold mb-4">Communicate with AI Assistant</h3>
+            <h3 className="text-lg font-semibold mb-4">Communicate with AI Assistant to Generate Graph</h3>
             <div className="bg-gray-100 p-4 rounded-lg mb-4 h-48 overflow-y-auto dark:bg-gray-800 dark:text-white">
               <div className="mb-2 text-left">
                 <span className="inline-block p-2 rounded-lg bg-white dark:bg-gray-700">
@@ -315,7 +315,7 @@ export default function FinancialAssistant() {
         </tbody>
       </table>
       <div className="mt-6 border-t pt-6">
-    <h3 className="text-lg font-semibold mb-4">Communicate with AI Assistant</h3>
+    <h3 className="text-lg font-semibold mb-4">Communicate with AI Assistant to Analyze Charts</h3>
     <div className="bg-gray-100 p-4 rounded-lg mb-4 h-48 overflow-y-auto dark:bg-gray-800 dark:text-white">
       <div className="mb-2 text-left">
         <span className="inline-block p-2 rounded-lg bg-white dark:bg-gray-700">
