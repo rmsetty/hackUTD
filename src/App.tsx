@@ -278,89 +278,131 @@ export default function FinancialAssistant() {
 
                 {/* Tabs Contents */}
                 <TabsContent value="chart" className="py-4">
-  <div className="grid grid-cols-2 gap-4">
-    <div>
-      <Label htmlFor="x-axis" className="text-gray-900 dark:text-gray-200">X-Axis</Label>
-      <Select value={xAxis} onValueChange={setXAxis} className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 bg-white">
-        <SelectTrigger id="x-axis" className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200">
-          <SelectValue placeholder="Select X-Axis" />
-        </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
-          <SelectItem value="time" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Time</SelectItem>
-          <SelectItem value="stock-ticker" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Stock Ticker</SelectItem>
-        </SelectContent>
-      </Select>
+  <div className="grid grid-cols-3 gap-4">
+    {/* Slot 1: Graph 1 */}
+    <div className="flex-1 overflow-auto p-6 mt-6 border-2 border-dashed border-gray-300 rounded-lg h-[600px] flex items-center justify-center text-gray-500 dark:text-gray-400">
+      Chart 1 will be rendered here based on selected options
     </div>
-    <div>
-      <Label htmlFor="y-axis" className="text-gray-900 dark:text-gray-200">Y-Axis</Label>
-      <Select value={yAxis} onValueChange={setYAxis} className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 bg-white">
-        <SelectTrigger id="y-axis" className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200">
-          <SelectValue placeholder="Select Y-Axis" />
-        </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
-          <SelectItem value="price" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Price</SelectItem>
-          <SelectItem value="volume" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Volume</SelectItem>
-        </SelectContent>
-      </Select>
+
+    {/* Slot 2: Graph 2 */}
+    <div className="flex-1 overflow-auto p-6 mt-6 border-2 border-dashed border-gray-300 rounded-lg h-[600px] flex items-center justify-center text-gray-500 dark:text-gray-400">
+      Chart 2 will be rendered here based on selected options
     </div>
-    <div>
-      <Label htmlFor="color-by" className="text-gray-900 dark:text-gray-200">Color By</Label>
-      <Select value={colorBy} onValueChange={setColorBy} className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 bg-white">
-        <SelectTrigger id="color-by" className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200">
-          <SelectValue placeholder="Color By" />
-        </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
-          <SelectItem value="sector" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Sector</SelectItem>
-          <SelectItem value="risk-level" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Risk Level</SelectItem>
-        </SelectContent>
-      </Select>
+
+    {/* Slot 3: Graph 3 */}
+    <div className="flex-1 overflow-auto p-6 mt-6 border-2 border-dashed border-gray-300 rounded-lg h-[600px] flex items-center justify-center text-gray-500 dark:text-gray-400">
+      Chart 3 will be rendered here based on selected options
     </div>
-    <div>
-      <Label htmlFor="point-size" className="text-gray-900 dark:text-gray-200">Point Size</Label>
-      <Select value={pointSize} onValueChange={setPointSize} className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 bg-white">
-        <SelectTrigger id="point-size" className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200">
-          <SelectValue placeholder="Point Size" />
-        </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
-          <SelectItem value="small" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Small</SelectItem>
-          <SelectItem value="medium" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Medium</SelectItem>
-          <SelectItem value="large" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Large</SelectItem>
-        </SelectContent>
-      </Select>
+  </div>
+
+  {/* Section for Communication with AI Assistant */}
+  <div className="mt-6 border-t pt-6">
+    <h3 className="text-lg font-semibold mb-4">Communicate with AI Assistant</h3>
+    <div className="bg-gray-100 p-4 rounded-lg mb-4 h-48 overflow-y-auto dark:bg-gray-800 dark:text-white">
+      <div className="mb-2 text-left">
+        <span className="inline-block p-2 rounded-lg bg-white dark:bg-gray-700">
+          Hello, how can I help you today?
+        </span>
+      </div>
+      <div className="mb-2 text-right">
+        <span className="inline-block p-2 rounded-lg bg-blue-500 text-white">
+          I need assistance with my project.
+        </span>
+      </div>
     </div>
-    <div>
-      <Label htmlFor="point-shape" className="text-gray-900 dark:text-gray-200">Point Shape</Label>
-      <Select value={pointShape} onValueChange={setPointShape} className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 bg-white">
-        <SelectTrigger id="point-shape" className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200">
-          <SelectValue placeholder="Point Shape" />
-        </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
-          <SelectItem value="circle" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Circle</SelectItem>
-          <SelectItem value="square" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Square</SelectItem>
-          <SelectItem value="triangle" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Triangle</SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
-    <div>
-      <Label htmlFor="facet-by" className="text-gray-900 dark:text-gray-200">Facet By</Label>
-      <Select value={facetBy} onValueChange={setFacetBy} className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 bg-white">
-        <SelectTrigger id="facet-by" className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200">
-          <SelectValue placeholder="Facet By" />
-        </SelectTrigger>
-        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
-          <SelectItem value="none" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">None</SelectItem>
-          <SelectItem value="sector" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Sector</SelectItem>
-          <SelectItem value="market-cap" className="text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Market Cap</SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
+    <form className="flex items-center">
+      <input
+        type="text"
+        placeholder="Type your message here..."
+        className="flex-grow mr-2 border p-2 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600 bg-white text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+      />
+      <button type="submit" className="flex items-center bg-blue-500 text-white p-2 rounded-lg">
+        <svg className="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7-7 7M5 12h14" />
+        </svg>
+        Send
+      </button>
+    </form>
   </div>
 </TabsContent>
 
 
+
 <TabsContent value="data" className="py-4">
   <div className="p-6 bg-white dark:bg-gray-800 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200">
-    <p>Data table will be displayed here.</p>
+    <h2 className="text-xl font-semibold mb-4">Financial Data</h2>
+    <p className="mb-4">Data table displaying financial market information will be shown below:</p>
+    
+    {/* Financial Data Table */}
+    <div className="overflow-x-auto">
+      <table className="min-w-full table-auto bg-white dark:bg-gray-800">
+        <thead>
+          <tr className="text-left text-sm font-medium text-gray-600 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">
+            <th className="py-2 px-4">Company</th>
+            <th className="py-2 px-4">Ticker</th>
+            <th className="py-2 px-4">Price</th>
+            <th className="py-2 px-4">Change</th>
+            <th className="py-2 px-4">Volume</th>
+            <th className="py-2 px-4">Market Cap</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* Blank rows for template */}
+          <tr className="border-b border-gray-200 dark:border-gray-600">
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">Company Name</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">Ticker</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">$0.00</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">+0.00%</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">0</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">$0.00B</td>
+          </tr>
+          <tr className="border-b border-gray-200 dark:border-gray-600">
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">Company Name</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">Ticker</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">$0.00</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">+0.00%</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">0</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">$0.00B</td>
+          </tr>
+          <tr className="border-b border-gray-200 dark:border-gray-600">
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">Company Name</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">Ticker</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">$0.00</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">+0.00%</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">0</td>
+            <td className="py-2 px-4 text-gray-900 dark:text-gray-200">$0.00B</td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="mt-6 border-t pt-6">
+    <h3 className="text-lg font-semibold mb-4">Communicate with AI Assistant</h3>
+    <div className="bg-gray-100 p-4 rounded-lg mb-4 h-48 overflow-y-auto dark:bg-gray-800 dark:text-white">
+      <div className="mb-2 text-left">
+        <span className="inline-block p-2 rounded-lg bg-white dark:bg-gray-700">
+          Hello, how can I help you today?
+        </span>
+      </div>
+      <div className="mb-2 text-right">
+        <span className="inline-block p-2 rounded-lg bg-blue-500 text-white">
+          I need assistance with my project.
+        </span>
+      </div>
+    </div>
+    <form className="flex items-center">
+      <input
+        type="text"
+        placeholder="Type your message here..."
+        className="flex-grow mr-2 border p-2 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600 bg-white text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+      />
+      <button type="submit" className="flex items-center bg-blue-500 text-white p-2 rounded-lg">
+        <svg className="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7-7 7M5 12h14" />
+        </svg>
+        Send
+      </button>
+    </form>
+  </div>
+    </div>
   </div>
 </TabsContent>
 <TabsContent value="style" className="py-4">
