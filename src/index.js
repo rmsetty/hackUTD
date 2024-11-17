@@ -7,7 +7,6 @@ import PptxGenJS from "pptxgenjs";
 import * as cheerio from 'cheerio';
 
 const openai = new OpenAI({
-    apiKey: "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"
 });
 
 dotenv.config();
